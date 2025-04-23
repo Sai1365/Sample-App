@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
 import com.example.myapplication.GoogleSignInViewModel
 import com.example.myapplication.R
 import com.example.myapplication.User
@@ -17,7 +18,7 @@ import com.google.firebase.FirebaseApp
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
 
-class MainActivity : ComponentActivity() {
+class MainActivity : AppCompatActivity() {
 
     private lateinit var googleSignInClient: GoogleSignInClient
     private val RC_SIGN_IN = 9001
@@ -31,7 +32,7 @@ class MainActivity : ComponentActivity() {
         auth = FirebaseAuth.getInstance()
 
         val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-            .requestIdToken(getString(R.string.default_web_client_id)) // Add this from google-services.json
+            .requestIdToken(getString(R.string.default_web_client_id))
             .requestEmail()
             .build()
 
@@ -59,8 +60,10 @@ class MainActivity : ComponentActivity() {
                                 name = it.displayName ?: "",
                                 email = it.email ?: ""
                             )
-                            //viewModel.insertUser(user)
+                            viewModel.insertUser(user)
                             Toast.makeText(this, "Welcome ${it.displayName}", Toast.LENGTH_SHORT).show()
+                            startActivity(Intent(this, UserDetailsActivity::class.java))
+
                         }
                     } else {
                         Toast.makeText(this, "Auth Failed", Toast.LENGTH_SHORT).show()
