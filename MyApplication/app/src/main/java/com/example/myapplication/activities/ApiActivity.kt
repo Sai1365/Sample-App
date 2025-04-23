@@ -1,7 +1,10 @@
 package com.example.myapplication.activities
 
+import android.Manifest
 import android.content.res.Resources
+import android.os.Build
 import android.os.Bundle
+import android.preference.PreferenceManager
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -13,6 +16,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.fragment.app.DialogFragment
@@ -39,6 +43,12 @@ class ApiActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_api)
 
+        //todo chane this
+        val prefs = PreferenceManager.getDefaultSharedPreferences(this)
+        prefs.edit().putBoolean("notifications_enabled", true).apply()
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.POST_NOTIFICATIONS), 1)
+        }
 
         val recyclerView = findViewById<RecyclerView>(R.id.recyclerview)
         adapter = ItemAdapter { item ->
@@ -117,7 +127,7 @@ class ApiActivity : AppCompatActivity() {
             }
 
             deleteButton.setOnClickListener {
-                viewModel.delete(item)
+                viewModel.deleteItem(item, context = requireContext())
                 dismiss()
             }
         }
