@@ -4,6 +4,8 @@ plugins {
     alias(libs.plugins.kotlin.compose) // Explicitly add this for Kotlin 2.0
     id("com.google.gms.google-services")
     kotlin("kapt")
+    id("kotlin-parcelize")
+
 }
 
 android {
@@ -19,6 +21,7 @@ android {
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
+
     }
 
     buildTypes {
@@ -49,6 +52,12 @@ android {
     }
 
     packaging.resources.excludes += "/META-INF/{AL2.0,LGPL2.1}"
+
+    kapt {
+        arguments {
+            arg("room.schemaLocation", "$projectDir/schemas")
+        }
+    }
 }
 
 dependencies {
@@ -64,6 +73,7 @@ dependencies {
     implementation(libs.material)
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
+    implementation(libs.activity)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
@@ -80,4 +90,33 @@ dependencies {
     implementation(libs.lifecycle.livedata.ktx)
     implementation(libs.firebase.analytics)
     implementation(platform(libs.firebase.bom))
+
+
+  /*  // ViewModel and LiveData
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.1")
+    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.5.1")
+
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4")
+
+
+    // Retrofit
+    implementation("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation("com.squareup.retrofit2:converter-gson:2.9.0")*/
+
+
+// Room
+    implementation("androidx.room:room-runtime:2.6.1")
+    kapt("androidx.room:room-compiler:2.6.1")
+    implementation("androidx.room:room-ktx:2.6.1")
+
+    // ViewModel and LiveData
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.1")
+    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.5.1")
+
+    // Coroutines
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4")
+
+    // Retrofit
+    implementation("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation("com.squareup.retrofit2:converter-gson:2.9.0")
 }
