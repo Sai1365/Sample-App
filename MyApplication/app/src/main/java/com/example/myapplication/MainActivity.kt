@@ -60,7 +60,7 @@ class MainActivity : ComponentActivity() {
                                 name = it.displayName ?: "",
                                 email = it.email ?: ""
                             )
-                            //viewModel.insertUser(user)
+                            viewModel.insertUser(user)
                             Toast.makeText(this, "Welcome ${it.displayName}", Toast.LENGTH_SHORT).show()
                         }
                     } else {

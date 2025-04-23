@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<paths xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Shared storage -->
+    <external-path
+        name="external_files"
+        path="." />
+
+    <!-- Internal storage -->
+    <files-path
+        name="internal_files"
+        path="." />
+
+    <!-- Cache files -->
+    <cache-path
+        name="cache_files"
+        path="." />
+
+    <!-- Custom directory example -->
+    <!-- <external-path
+        name="custom_files"
+        path="path/to/your/custom/directory" /> -->
+</paths>

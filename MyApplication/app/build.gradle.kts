@@ -64,6 +64,7 @@ dependencies {
     implementation(libs.material)
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
+    implementation(libs.activity)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
@@ -80,4 +81,17 @@ dependencies {
     implementation(libs.lifecycle.livedata.ktx)
     implementation(libs.firebase.analytics)
     implementation(platform(libs.firebase.bom))
+
+    // PDF Viewer library
+
+    //implementation(libs.itextg)
+    implementation("com.github.mhiew:android-pdf-viewer:3.2.0-beta.3")
+
+    // Coroutines for async operations
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.7.3")
+
+    implementation("com.google.android.material:material:1.7.0")
+
+
+
 }
