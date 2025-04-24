@@ -1,0 +1,50 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mainLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?android:attr/windowBackground"
+    android:orientation="vertical"
+    android:padding="24dp"
+    tools:context=".activities.UserDetailsActivity">
+
+    <!-- Username Display -->
+    <TextView
+        android:id="@+id/tvUserName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Welcome, Sai Karun"
+        android:textColor="?android:attr/textColorPrimary"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <!-- PDF Viewer Button -->
+    <Button
+        android:id="@+id/btnPdfViewer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="PDF Viewer" />
+
+    <!-- Image Capture Button -->
+    <Button
+        android:id="@+id/btnImageCapture"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Image Capture and Gallery Selection" />
+
+    <!-- API Button -->
+    <Button
+        android:id="@+id/btnApi"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="API" />
+    <Switch
+        android:id="@+id/notificationSwitch"
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:text="Enable Notifications" />
+
+</LinearLayout>
