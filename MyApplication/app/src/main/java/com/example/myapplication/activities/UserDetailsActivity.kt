@@ -1,5 +1,6 @@
 package com.example.myapplication.activities
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
@@ -8,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.myapplication.GoogleSignInViewModel
+import com.example.myapplication.PdfViewer
 import com.example.myapplication.R
 
 class UserDetailsActivity : AppCompatActivity() {
@@ -18,14 +20,24 @@ class UserDetailsActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_user_details)
 
-        val nameText = findViewById<TextView>(R.id.tvName)
-        val emailText = findViewById<TextView>(R.id.tvEmail)
+        val nameText = findViewById<TextView>(R.id.tvUserName)
 
         viewModel.allUsers.observe(this) { users ->
             users.firstOrNull()?.let { user ->
-                nameText.text = user.name
-                emailText.text = user.email
+                nameText.text = "Welcome, ${user.name}"
+
             }
+        }
+
+        findViewById<TextView>(R.id.btnApi).setOnClickListener {
+            startActivity(Intent(this, ApiActivity::class.java))
+
+        }
+        findViewById<TextView>(R.id.btnPdfViewer).setOnClickListener {
+            startActivity(Intent(this, PdfViewer::class.java))
+        }
+        findViewById<TextView>(R.id.btnImageCapture).setOnClickListener {
+            startActivity(Intent(this, ImagePickerActivity::class.java))
         }
     }
 }
