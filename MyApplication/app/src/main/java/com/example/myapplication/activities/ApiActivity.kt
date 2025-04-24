@@ -1,7 +1,6 @@
 package com.example.myapplication.activities
 
 import android.Manifest
-import android.content.res.Resources
 import android.os.Build
 import android.os.Bundle
 import android.preference.PreferenceManager
@@ -11,27 +10,21 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
-import android.widget.Toast
-import androidx.activity.ComponentActivity
-import androidx.activity.enableEdgeToEdge
-import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import androidx.fragment.app.DialogFragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.room.Room
 import com.example.myapplication.ItemAdapter
-import com.example.myapplication.ItemViewModelFactory
+import com.example.myapplication.viewModel.ItemViewModelFactory
 import com.example.myapplication.R
 import com.example.myapplication.api.ApiService
 import com.example.myapplication.api.AppDatabase
 import com.example.myapplication.api.ItemEntity
 import com.example.myapplication.api.ItemRepository
-import com.example.myapplication.api.ItemViewModel
+import com.example.myapplication.viewModel.ItemViewModel
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
@@ -42,14 +35,6 @@ class ApiActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_api)
-
-        //todo chane this
-        val prefs = PreferenceManager.getDefaultSharedPreferences(this)
-        prefs.edit().putBoolean("notifications_enabled", true).apply()
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-            ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.POST_NOTIFICATIONS), 1)
-        }
-
         val recyclerView = findViewById<RecyclerView>(R.id.recyclerview)
         adapter = ItemAdapter { item ->
 

@@ -1,4 +1,4 @@
-package com.example.myapplication.api
+package com.example.myapplication.viewModel
 
 import android.app.NotificationChannel
 import android.app.NotificationManager
@@ -12,6 +12,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
 import com.example.myapplication.R
+import com.example.myapplication.api.ItemEntity
+import com.example.myapplication.api.ItemRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
@@ -43,7 +45,7 @@ class ItemViewModel(private val repository: ItemRepository) : ViewModel() {
             repository.deleteItem(item)
 
             val sharedPrefs = PreferenceManager.getDefaultSharedPreferences(context)
-            val isNotificationEnabled = sharedPrefs.getBoolean("notifications_enabled", true)
+            val isNotificationEnabled = sharedPrefs.getBoolean("notifications_enabled", false)
 
             if (isNotificationEnabled) {
                 sendDeleteNotification(context, item)

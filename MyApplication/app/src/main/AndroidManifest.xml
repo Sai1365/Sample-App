@@ -27,7 +27,7 @@
 
 
         <activity
-            android:name=".PdfViewer"
+            android:name=".activities.PdfViewer"
             android:theme="@style/Theme.MyApplication"
             android:exported="false" />
         <activity

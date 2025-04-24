@@ -1,9 +1,8 @@
-package com.example.myapplication
+package com.example.myapplication.viewModel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.myapplication.api.ItemRepository
-import com.example.myapplication.api.ItemViewModel
 
 class ItemViewModelFactory(
     private val repository: ItemRepository

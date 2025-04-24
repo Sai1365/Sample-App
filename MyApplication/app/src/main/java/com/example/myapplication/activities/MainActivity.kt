@@ -2,12 +2,10 @@ package com.example.myapplication.activities
 
 import android.content.Intent
 import android.os.Bundle
-import android.preference.PreferenceManager
 import android.widget.Toast
-import androidx.activity.ComponentActivity
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import com.example.myapplication.GoogleSignInViewModel
+import com.example.myapplication.viewModel.GoogleSignInViewModel
 import com.example.myapplication.R
 import com.example.myapplication.User
 import com.google.android.gms.auth.api.signin.GoogleSignIn
@@ -22,7 +20,7 @@ import com.google.firebase.auth.GoogleAuthProvider
 class MainActivity : AppCompatActivity() {
 
     private lateinit var googleSignInClient: GoogleSignInClient
-    private val RC_SIGN_IN = 9001
+    private val SIGN_IN = 9001
     private lateinit var auth: FirebaseAuth
     private val viewModel: GoogleSignInViewModel by viewModels()
 
@@ -41,7 +39,7 @@ class MainActivity : AppCompatActivity() {
 
         findViewById<SignInButton>(R.id.btnGoogleSignIn).setOnClickListener {
             val signInIntent = googleSignInClient.signInIntent
-            startActivityForResult(signInIntent, RC_SIGN_IN)
+            startActivityForResult(signInIntent, SIGN_IN)
         }
 
 
@@ -50,7 +48,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        if (requestCode == RC_SIGN_IN) {
+        if (requestCode == SIGN_IN) {
             val task = GoogleSignIn.getSignedInAccountFromIntent(data)
             try {
                 val account = task.getResult(ApiException::class.java)!!

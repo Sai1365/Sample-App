@@ -2,14 +2,12 @@ package com.example.myapplication.activities
 
 import android.content.Intent
 import android.os.Bundle
+import android.preference.PreferenceManager
+import android.widget.Switch
 import android.widget.TextView
-import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
-import com.example.myapplication.GoogleSignInViewModel
-import com.example.myapplication.PdfViewer
+import com.example.myapplication.viewModel.GoogleSignInViewModel
 import com.example.myapplication.R
 
 class UserDetailsActivity : AppCompatActivity() {
@@ -27,6 +25,17 @@ class UserDetailsActivity : AppCompatActivity() {
                 nameText.text = "Welcome, ${user.name}"
 
             }
+        }
+        val prefs = PreferenceManager.getDefaultSharedPreferences(this)
+        val switch = findViewById<Switch>(R.id.notificationSwitch)
+
+        switch.setOnCheckedChangeListener { _, isChecked ->
+            prefs.edit().putBoolean("notifications_enabled", isChecked).apply()
+        }
+        if(prefs.getBoolean("notifications_enabled", false)){
+            switch.isChecked = true
+            prefs.edit().putBoolean("notifications_enabled", true).apply()
+
         }
 
         findViewById<TextView>(R.id.btnApi).setOnClickListener {
