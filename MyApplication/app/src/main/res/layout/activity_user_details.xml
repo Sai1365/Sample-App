@@ -11,11 +11,15 @@
     tools:context=".activities.UserDetailsActivity">
 
     <!-- Username Display -->
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:src="@drawable/sample"/>
     <TextView
         android:id="@+id/tvUserName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Welcome, Sai Karun"
+        android:text="Welcome, User"
         android:textColor="?android:attr/textColorPrimary"
         android:textSize="20sp"
         android:textStyle="bold" />
@@ -25,6 +29,7 @@
         android:id="@+id/btnPdfViewer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
         android:text="PDF Viewer" />
 
     <!-- Image Capture Button -->
@@ -32,6 +37,8 @@
         android:id="@+id/btnImageCapture"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+
         android:text="Image Capture and Gallery Selection" />
 
     <!-- API Button -->
@@ -39,6 +46,8 @@
         android:id="@+id/btnApi"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+
         android:text="API" />
     <Switch
         android:id="@+id/notificationSwitch"
