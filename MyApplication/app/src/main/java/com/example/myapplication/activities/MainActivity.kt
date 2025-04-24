@@ -72,8 +72,6 @@ class MainActivity : AppCompatActivity() {
                 }
             } catch (e: ApiException) {
                 e.printStackTrace()
-                //todo remove this
-                //startActivity(Intent(this, UserDetailsActivity::class.java))
 
             }
         }
