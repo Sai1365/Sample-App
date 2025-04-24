@@ -83,7 +83,8 @@ class ApiActivity : AppCompatActivity() {
         }
 
         viewModel.error.observe(this) {
-            it?.let { Toast.makeText(this, it, Toast.LENGTH_SHORT).show() }
+            it?.let {
+                Log.e("ApiActivity", it) }
         }
 
         viewModel.loadItems()
