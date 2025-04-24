@@ -65,7 +65,6 @@ class MainActivity : AppCompatActivity() {
                             viewModel.insertUser(user)
                             Toast.makeText(this, "Welcome ${it.displayName}", Toast.LENGTH_SHORT).show()
                             startActivity(Intent(this, UserDetailsActivity::class.java))
-
                         }
                     } else {
                         Toast.makeText(this, "Auth Failed", Toast.LENGTH_SHORT).show()
@@ -74,7 +73,7 @@ class MainActivity : AppCompatActivity() {
             } catch (e: ApiException) {
                 e.printStackTrace()
                 //todo remove this
-                startActivity(Intent(this, UserDetailsActivity::class.java))
+                //startActivity(Intent(this, UserDetailsActivity::class.java))
 
             }
         }

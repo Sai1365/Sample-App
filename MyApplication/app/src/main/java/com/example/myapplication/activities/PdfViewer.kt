@@ -1,7 +1,6 @@
 package com.example.myapplication.activities
 
 
-// PdfViewer.kt
 import android.os.Bundle
 import android.webkit.WebView
 import android.webkit.WebViewClient

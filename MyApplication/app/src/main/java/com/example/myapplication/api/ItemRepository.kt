@@ -17,7 +17,7 @@ class ItemRepository(
             }
             dao.insertItems(entities)
         } catch (e: Exception) {
-            throw e // Handle in ViewModel
+            throw e
         }
     }
 

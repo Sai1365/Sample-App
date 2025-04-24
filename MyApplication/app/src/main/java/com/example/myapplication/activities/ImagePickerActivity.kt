@@ -85,16 +85,12 @@ class ImagePickerActivity : AppCompatActivity() {
     }
 }
 
-// Extension function outside the class
 fun FragmentActivity.requestCameraAndStoragePermissions(onGranted: () -> Unit) {
     val requestPermissionLauncher = registerForActivityResult(
         ActivityResultContracts.RequestMultiplePermissions()
     ) { permissions ->
         if (permissions.all { it.value }) {
             onGranted()
-        } else {
-            // Handle the case where permissions are denied
-            // You might want to show a message to the user
         }
     }
 
